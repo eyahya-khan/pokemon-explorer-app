@@ -1,4 +1,3 @@
-import "./App.css";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import PokemonDetail from "./components/PokemonDetail";
 import PokemonList from "./components/PokemonList";
