@@ -27,6 +27,10 @@ const PokemonList: React.FC = () => {
     fetchPokemonList();
   }, []);
 
+  const capitalizeFirstLetter = (str: string) => {
+    return str.charAt(0).toUpperCase() + str.slice(1);
+  };
+
   return (
     <div>
       <h1>Pokémon List</h1>
@@ -38,7 +42,10 @@ const PokemonList: React.FC = () => {
             <Card key={pokemon.name} sx={{ marginBottom: 2 }}>
               <CardContent>
                 <Typography variant="h5" component="div">
-                  <Link to={`/pokemon/${pokemon.name}`}>{pokemon.name}</Link>
+                  <Link to={`/pokemon/${pokemon.name}`}>
+                    {" "}
+                    {capitalizeFirstLetter(pokemon.name)}
+                  </Link>
                 </Typography>
               </CardContent>
             </Card>
