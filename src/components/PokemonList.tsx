@@ -1,3 +1,4 @@
+import "../App.css";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { Card, CardContent, CircularProgress, Typography } from "@mui/material";
@@ -32,26 +33,28 @@ const PokemonList: React.FC = () => {
   };
 
   return (
-    <div>
-      <h1>Pokémon List</h1>
-      {loading ? (
-        <CircularProgress />
-      ) : (
-        <div>
-          {pokemonList.map((pokemon) => (
-            <Card key={pokemon.name} sx={{ marginBottom: 2 }}>
-              <CardContent>
-                <Typography variant="h5" component="div">
-                  <Link to={`/pokemon/${pokemon.name}`}>
-                    {" "}
-                    {capitalizeFirstLetter(pokemon.name)}
-                  </Link>
-                </Typography>
-              </CardContent>
-            </Card>
-          ))}
-        </div>
-      )}
+    <div className="pokemonNamelist">
+      <div>
+        <h1>Pokémon List</h1>
+        {loading ? (
+          <CircularProgress />
+        ) : (
+          <div>
+            {pokemonList.map((pokemon) => (
+              <Card key={pokemon.name} sx={{ marginBottom: 2 }}>
+                <CardContent>
+                  <Typography variant="h5" component="div">
+                    <Link to={`/pokemon/${pokemon.name}`}>
+                      {" "}
+                      {capitalizeFirstLetter(pokemon.name)}
+                    </Link>
+                  </Typography>
+                </CardContent>
+              </Card>
+            ))}
+          </div>
+        )}
+      </div>
     </div>
   );
 };

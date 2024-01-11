@@ -1,3 +1,13 @@
 .App {
   text-align: center;
 }
+
+.pokemonNamelist {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.pokemonNamelist a {
+  text-decoration: none;
+}
