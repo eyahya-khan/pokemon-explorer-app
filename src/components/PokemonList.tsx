@@ -64,11 +64,24 @@ const PokemonList: React.FC = () => {
         ) : (
           <div>
             {currentPokemonList.map((pokemon) => (
-              <Card key={pokemon.name} sx={{ marginBottom: 2 }}>
+              <Card
+                key={pokemon.name}
+                sx={{ marginBottom: 2, textAlign: "center" }}
+              >
                 <CardContent>
+                  <img
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+                      pokemon.url.split("/")[6]
+                    }.png`}
+                    alt={pokemon.name}
+                    style={{
+                      marginLeft: "10px",
+                      width: "50px",
+                      height: "50px",
+                    }}
+                  />
                   <Typography variant="h5" component="div">
                     <Link to={`/pokemon/${pokemon.name}`}>
-                      {" "}
                       {capitalizeFirstLetter(pokemon.name)}
                     </Link>
                   </Typography>
@@ -88,7 +101,7 @@ const PokemonList: React.FC = () => {
               renderItem={(item) => (
                 <PaginationItem
                   component={Link}
-                  to={`/pokemon-list/${item.page}`}
+                  to={`/pokemon/${item.page}`}
                   {...item}
                 />
               )}
