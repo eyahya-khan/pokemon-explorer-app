@@ -6,7 +6,6 @@ import {
   CardContent,
   CircularProgress,
   Pagination,
-  PaginationItem,
   Typography,
 } from "@mui/material";
 import axios from "axios";
@@ -19,8 +18,11 @@ interface PokemonListItem {
 const PokemonList: React.FC = () => {
   const [pokemonList, setPokemonList] = useState<PokemonListItem[]>([]);
   const [loading, setLoading] = useState(true);
-  const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 3;
+
+  const [pageNumber, setPageNumber] = useState(0);
+  const postPerPage = 3;
+  const visitedPost = pageNumber * postPerPage;
+  const displayPost = pokemonList.slice(visitedPost, visitedPost + postPerPage);
 
   useEffect(() => {
     const fetchPokemonList = async () => {
@@ -45,15 +47,9 @@ const PokemonList: React.FC = () => {
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
-    setCurrentPage(value);
+    setPageNumber(value - 1);
   };
-
-  const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentPokemonList = pokemonList.slice(
-    indexOfFirstItem,
-    indexOfLastItem
-  );
+  const countPage = Math.ceil(pokemonList.length / postPerPage);
 
   return (
     <div className="pokemonNamelist">
@@ -63,7 +59,7 @@ const PokemonList: React.FC = () => {
           <CircularProgress />
         ) : (
           <div>
-            {currentPokemonList.map((pokemon) => (
+            {displayPost.map((pokemon) => (
               <Card
                 key={pokemon.name}
                 sx={{ marginBottom: 2, textAlign: "center" }}
@@ -90,21 +86,11 @@ const PokemonList: React.FC = () => {
             ))}
 
             <Pagination
-              count={Math.ceil(pokemonList.length / itemsPerPage)}
-              page={currentPage}
+              count={countPage}
+              page={pageNumber + 1}
+              variant="outlined"
+              shape="rounded"
               onChange={handlePageChange}
-              color="primary"
-              size="large"
-              showFirstButton
-              showLastButton
-              sx={{ marginTop: 2 }}
-              renderItem={(item) => (
-                <PaginationItem
-                  component={Link}
-                  to={`/pokemon/${item.page}`}
-                  {...item}
-                />
-              )}
             />
           </div>
         )}
