@@ -6,8 +6,13 @@
 
 .pokemonNamelist a {
   text-decoration: none;
+  color: #000;
 }
 
 h1 {
   text-align: center;
+}
+
+ul li {
+  text-align: left;
 }

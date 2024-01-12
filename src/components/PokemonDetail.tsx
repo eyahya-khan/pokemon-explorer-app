@@ -46,12 +46,23 @@ const PokemonDetail: React.FC = () => {
           <CircularProgress />
         ) : (
           <div>
-            <Card>
+            <Card
+              sx={{
+                marginBottom: 2,
+                textAlign: "center",
+                boxShadow: "0 5px 5px rgba(0,0,0,0.5)",
+                backgroundColor: "#9EDEF9",
+              }}
+            >
               <CardContent>
                 <Typography variant="h5" component="div">
                   {capitalizeFirstLetter(pokemonData?.name || "")}
                 </Typography>
-                <Typography variant="h6" component="div" sx={{ marginTop: 2 }}>
+                <Typography
+                  variant="h6"
+                  component="div"
+                  sx={{ marginTop: 2, textAlign: "left" }}
+                >
                   Abilities:
                 </Typography>
                 <ul>

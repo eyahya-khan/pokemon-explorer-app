@@ -62,7 +62,12 @@ const PokemonList: React.FC = () => {
             {displayPokemonList.map((pokemon) => (
               <Card
                 key={pokemon.name}
-                sx={{ marginBottom: 2, textAlign: "center" }}
+                sx={{
+                  marginBottom: 2,
+                  textAlign: "center",
+                  boxShadow: "0 5px 5px rgba(0,0,0,0.5)",
+                  backgroundColor: "#9EDEF9",
+                }}
               >
                 <CardContent>
                   <Link to={`/pokemon/${pokemon.name}`}>
