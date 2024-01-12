@@ -65,17 +65,19 @@ const PokemonList: React.FC = () => {
                 sx={{ marginBottom: 2, textAlign: "center" }}
               >
                 <CardContent>
-                  <img
-                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
-                      pokemon.url.split("/")[6]
-                    }.png`}
-                    alt={pokemon.name}
-                    style={{
-                      marginLeft: "10px",
-                      width: "50px",
-                      height: "50px",
-                    }}
-                  />
+                  <Link to={`/pokemon/${pokemon.name}`}>
+                    <img
+                      src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${
+                        pokemon.url.split("/")[6]
+                      }.png`}
+                      alt={pokemon.name}
+                      style={{
+                        marginLeft: "10px",
+                        width: "50px",
+                        height: "50px",
+                      }}
+                    />
+                  </Link>
                   <Typography variant="h5" component="div">
                     <Link to={`/pokemon/${pokemon.name}`}>
                       {capitalizeFirstLetter(pokemon.name)}
