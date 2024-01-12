@@ -9,6 +9,7 @@ import {
   Typography,
 } from "@mui/material";
 import axios from "axios";
+import { capitalizeFirstLetter } from "../utills/CapitalizeFirstLetter";
 
 interface PokemonListItem {
   name: string;
@@ -20,9 +21,12 @@ const PokemonList: React.FC = () => {
   const [loading, setLoading] = useState(true);
 
   const [pageNumber, setPageNumber] = useState(0);
-  const postPerPage = 3;
-  const visitedPost = pageNumber * postPerPage;
-  const displayPost = pokemonList.slice(visitedPost, visitedPost + postPerPage);
+  const pokemonPerPage = 3;
+  const visitedPost = pageNumber * pokemonPerPage;
+  const displayPokemonList = pokemonList.slice(
+    visitedPost,
+    visitedPost + pokemonPerPage
+  );
 
   useEffect(() => {
     const fetchPokemonList = async () => {
@@ -39,17 +43,13 @@ const PokemonList: React.FC = () => {
     fetchPokemonList();
   }, []);
 
-  const capitalizeFirstLetter = (str: string) => {
-    return str.charAt(0).toUpperCase() + str.slice(1);
-  };
-
   const handlePageChange = (
     event: React.ChangeEvent<unknown>,
     value: number
   ) => {
     setPageNumber(value - 1);
   };
-  const countPage = Math.ceil(pokemonList.length / postPerPage);
+  const countPage = Math.ceil(pokemonList.length / pokemonPerPage);
 
   return (
     <div className="pokemonNamelist">
@@ -59,7 +59,7 @@ const PokemonList: React.FC = () => {
           <CircularProgress />
         ) : (
           <div>
-            {displayPost.map((pokemon) => (
+            {displayPokemonList.map((pokemon) => (
               <Card
                 key={pokemon.name}
                 sx={{ marginBottom: 2, textAlign: "center" }}
