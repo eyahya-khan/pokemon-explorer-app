@@ -7,6 +7,10 @@ Step on step:
 4. Create two file src/components/PokemonList.tsx and src/components/PokemonDetail.tsx and test with sample text
 5. Fetch data from API on pokemonList page
 6. Routing with pokemon detail page
+7. style using CSS3
+
+# Using tech
+** React, typeScript, Material UI, API, CSS3
 
 
 ## on live
