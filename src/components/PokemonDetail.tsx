@@ -10,11 +10,7 @@ import {
 } from "@mui/material";
 import axios from "axios";
 import { capitalizeFirstLetter } from "../utills/CapitalizeFirstLetter";
-
-interface PokemonDetails {
-  name: string;
-  abilities: { ability: { name: string } }[];
-}
+import { PokemonDetails } from "../utills/intterfaces";
 
 const PokemonDetail: React.FC = () => {
   const { pokemonName } = useParams<{ pokemonName: string }>();
